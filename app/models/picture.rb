@@ -1,6 +1,9 @@
 class Picture < ApplicationRecord
   # Direct associations
 
+  has_many   :comments,
+             :dependent => :destroy
+
   belongs_to :rapid,
              :counter_cache => true
 

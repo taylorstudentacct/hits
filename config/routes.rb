@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pictures
   resources :rapids
   resources :rivers
   devise_for :users

@@ -1,5 +1,7 @@
 ActiveAdmin.register Picture do
 
+ permit_params :rapid_id, :uploaded_by, :picture
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

@@ -1,6 +1,11 @@
 class Like < ApplicationRecord
   # Direct associations
 
+  belongs_to :liker,
+             :class_name => "User",
+             :foreign_key => "liked_by",
+             :counter_cache => true
+
   # Indirect associations
 
   # Validations

@@ -6,11 +6,9 @@
   <ul class="list-group list-group-flush">
     <% @picture.river.each do |river| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <a href="/rivers/<%= river.id %>">
           <%= river %>
         </a>
-        <!-- Show link end -->
 
       </li>
     <% end %>

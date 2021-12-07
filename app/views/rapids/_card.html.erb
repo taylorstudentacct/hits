@@ -6,32 +6,24 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Name</dt>
-      <!-- Display name start -->
       <dd><%= rapid.name %></dd>
-      <!-- Display name end -->
 
       <dt>River</dt>
-      <!-- Display river_id start -->
       <dd>
         <% if @rapid.river.present? %>
           <%= link_to rapid.river, rapid.river %>
         <% end %>
       </dd>
-      <!-- Display river_id end -->
 
       <dt>Location</dt>
-      <!-- Display location start -->
       <dd>
         <div>
           <%= render partial: "rapids/one_photo_map" %>
         </div>
       </dd>
-      <!-- Display location end -->
 
       <dt>Description</dt>
-      <!-- Display description start -->
       <dd><%= rapid.description %></dd>
-      <!-- Display description end -->
 
     </dl>
 
@@ -40,21 +32,17 @@
         <%= link_to_show_or_back rapid, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link rapid start -->
       <div class="col">
         <%= link_to edit_rapid_url(rapid), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link rapid end -->
 
-      <!-- Delete link rapid start -->
       <div class="col">
         <%= link_to rapid, method: :delete, data: { confirm: "Do you really want to delete this rapid?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link rapid end -->
     </div>
   </div>
 

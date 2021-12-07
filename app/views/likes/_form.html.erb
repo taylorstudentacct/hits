@@ -1,7 +1,6 @@
 <% was_validated = like.errors.any? %>
 
 <%= form_with(model: like, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for picture_id start -->
   <div class="form-group">
     <% picture_class = "form-control" %>
     <% picture_was_invalid = like.errors.include?(:picture) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :picture_id %>
-    <!-- Input for picture_id start -->
     <%= f.collection_select :picture_id, Picture.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for picture_id end -->
     <% if picture_was_invalid %>
       <% like.errors.full_messages_for(:picture).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for picture_id end -->
-  <!-- Label and input for liked_by start -->
   <div class="form-group">
     <% liked_by_class = "form-control" %>
     <% liked_by_was_invalid = like.errors.include?(:liked_by) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :liked_by %>
-    <!-- Input for liked_by start -->
     <%= f.collection_select :liked_by, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for liked_by end -->
     <% if liked_by_was_invalid %>
       <% like.errors.full_messages_for(:liked_by).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for liked_by end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

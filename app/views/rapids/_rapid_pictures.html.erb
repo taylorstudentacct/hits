@@ -10,26 +10,20 @@
   <ul class="list-group list-group-flush">
     <% @rapid.pictures.each do |picture| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to picture, picture %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <% if current_user == picture.rafter %>
           <%= link_to picture, method: :delete do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="rapid_pictures_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "rapids/rapid_pictures_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

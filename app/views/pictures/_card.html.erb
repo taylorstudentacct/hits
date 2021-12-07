@@ -6,29 +6,23 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Rapid</dt>
-      <!-- Display rapid_id start -->
       <dd>
         <% if @picture.rapid.present? %>
           <%= link_to picture.rapid, picture.rapid %>
         <% end %>
       </dd>
-      <!-- Display rapid_id end -->
 
       <dt>Uploaded by</dt>
-      <!-- Display uploaded_by start -->
       <dd>
         <% if @picture.rafter.present? %>
           <%= link_to picture.rafter, picture.rafter %>
         <% end %>
       </dd>
-      <!-- Display uploaded_by end -->
 
       <dt>Picture</dt>
-      <!-- Display picture start -->
       <dd>
         <%= cl_image_tag @picture.picture, class: "img-fluid" %>
       </dd>
-      <!-- Display picture end -->
 
     </dl>
 
@@ -37,7 +31,6 @@
         <%= link_to_show_or_back picture, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link picture start -->
       <div class="col">
         <% if current_user == @picture.rafter %>
           <%= link_to edit_picture_url(picture), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -45,9 +38,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link picture end -->
 
-      <!-- Delete link picture start -->
       <div class="col">
         <% if current_user == @picture.rafter %>
           <%= link_to picture, method: :delete, data: { confirm: "Do you really want to delete this picture?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -55,7 +46,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link picture end -->
     </div>
   </div>
 

@@ -1,7 +1,6 @@
 <% was_validated = comment.errors.any? %>
 
 <%= form_with(model: comment, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for picture_id start -->
   <div class="form-group">
     <% picture_class = "form-control" %>
     <% picture_was_invalid = comment.errors.include?(:picture) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :picture_id %>
-    <!-- Input for picture_id start -->
     <%= f.collection_select :picture_id, Picture.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for picture_id end -->
     <% if picture_was_invalid %>
       <% comment.errors.full_messages_for(:picture).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for picture_id end -->
-  <!-- Label and input for text start -->
   <div class="form-group">
     <% text_class = "form-control" %>
     <% text_was_invalid = comment.errors.include?(:text) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :text %>
-    <!-- Input for text start -->
     <%= f.text_area :text, class: text_class, placeholder: "Enter text" %>
-    <!-- Input for text end -->
     <% if text_was_invalid %>
       <% comment.errors.full_messages_for(:text).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for text end -->
-  <!-- Label and input for created_by start -->
   <div class="form-group">
     <% created_by_class = "form-control" %>
     <% created_by_was_invalid = comment.errors.include?(:created_by) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :created_by %>
-    <!-- Input for created_by start -->
     <%= f.collection_select :created_by, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for created_by end -->
     <% if created_by_was_invalid %>
       <% comment.errors.full_messages_for(:created_by).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,6 +67,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for created_by end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

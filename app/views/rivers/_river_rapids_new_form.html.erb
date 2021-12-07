@@ -1,42 +1,24 @@
-<!-- Form rapid start -->
 <%= form_with(model: @rapid, local: true) do |f| %>
-<!-- Form rapid end -->
 
-  <!-- Label and input for name start -->
   <div class="form-group">
     <%= f.label :name %>
 
-    <!-- Input for name start -->
     <%= f.text_field :name, class: "form-control" %>
-    <!-- Input for name end -->
   </div>
-  <!-- Label and input for name end -->
 
-  <!-- Label and input for river_id start -->
-  <!-- Input for river_id start -->
   <%= f.hidden_field :river_id, value: @river.id %>
-  <!-- Input for river_id end -->
-  <!-- Label and input for river_id end -->
 
-  <!-- Label and input for location start -->
   <div class="form-group">
     <%= f.label :location %>
 
-    <!-- Input for location start -->
     <%= f.text_field :location, class: "form-control" %>
-    <!-- Input for location end -->
   </div>
-  <!-- Label and input for location end -->
 
-  <!-- Label and input for description start -->
   <div class="form-group">
     <%= f.label :description %>
 
-    <!-- Input for description start -->
     <%= f.text_field :description, class: "form-control" %>
-    <!-- Input for description end -->
   </div>
-  <!-- Label and input for description end -->
 
   <%= f.submit "Create rapid", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

@@ -12,7 +12,11 @@
 
       <dt>River</dt>
       <!-- Display river_id start -->
-      <dd><%= rapid.river_id %></dd>
+      <dd>
+        <% if @rapid.river.present? %>
+          <%= link_to rapid.river, rapid.river %>
+        <% end %>
+      </dd>
       <!-- Display river_id end -->
 
       <dt>Location</dt>

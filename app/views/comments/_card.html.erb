@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Picture</dt>
       <!-- Display picture_id start -->
-      <dd><%= comment.picture_id %></dd>
+      <dd>
+        <% if @comment.picture.present? %>
+          <%= link_to comment.picture, comment.picture %>
+        <% end %>
+      </dd>
       <!-- Display picture_id end -->
 
       <dt>Text</dt>
@@ -17,7 +21,11 @@
 
       <dt>Created by</dt>
       <!-- Display created_by start -->
-      <dd><%= comment.created_by %></dd>
+      <dd>
+        <% if @comment.commentor.present? %>
+          <%= link_to comment.commentor, comment.commentor %>
+        <% end %>
+      </dd>
       <!-- Display created_by end -->
 
     </dl>

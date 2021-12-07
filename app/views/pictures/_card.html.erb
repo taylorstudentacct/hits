@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Rapid</dt>
       <!-- Display rapid_id start -->
-      <dd><%= picture.rapid_id %></dd>
+      <dd>
+        <% if @picture.rapid.present? %>
+          <%= link_to picture.rapid, picture.rapid %>
+        <% end %>
+      </dd>
       <!-- Display rapid_id end -->
 
       <dt>Uploaded by</dt>
       <!-- Display uploaded_by start -->
-      <dd><%= picture.uploaded_by %></dd>
+      <dd>
+        <% if @picture.rafter.present? %>
+          <%= link_to picture.rafter, picture.rafter %>
+        <% end %>
+      </dd>
       <!-- Display uploaded_by end -->
 
       <dt>Picture</dt>

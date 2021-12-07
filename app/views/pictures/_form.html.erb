@@ -28,30 +28,9 @@
   </div>
   <!-- Label and input for rapid_id end -->
   <!-- Label and input for uploaded_by start -->
-  <div class="form-group">
-    <% uploaded_by_class = "form-control" %>
-    <% uploaded_by_was_invalid = picture.errors.include?(:uploaded_by) %>
-
-    <% if was_validated %>
-      <% if uploaded_by_was_invalid %>
-        <% uploaded_by_class << " is-invalid" %>
-      <% else %>
-        <% uploaded_by_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :uploaded_by %>
-    <!-- Input for uploaded_by start -->
-    <%= f.collection_select :uploaded_by, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for uploaded_by end -->
-    <% if uploaded_by_was_invalid %>
-      <% picture.errors.full_messages_for(:uploaded_by).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "uploaded_by" start -->
+  <%= f.hidden_field :uploaded_by, value: current_user.id %>
+  <!-- Input for "uploaded_by" end -->
   <!-- Label and input for uploaded_by end -->
   <!-- Label and input for picture start -->
   <div class="form-group">

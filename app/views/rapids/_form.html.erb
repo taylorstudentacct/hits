@@ -42,7 +42,7 @@
 
     <%= f.label :river_id %>
     <!-- Input for river_id start -->
-    <%= f.number_field :river_id, class: river_class, placeholder: "Enter river" %>
+    <%= f.collection_select :river_id, River.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for river_id end -->
     <% if river_was_invalid %>
       <% rapid.errors.full_messages_for(:river).each do |message| %>

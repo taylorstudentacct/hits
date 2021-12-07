@@ -1,19 +1,18 @@
 class User < ApplicationRecord
-  
   include JwtToken
-# Direct associations
+  # Direct associations
 
   has_many   :likes,
-             :foreign_key => "liked_by",
-             :dependent => :destroy
+             foreign_key: "liked_by",
+             dependent: :destroy
 
   has_many   :comments,
-             :foreign_key => "created_by",
-             :dependent => :destroy
+             foreign_key: "created_by",
+             dependent: :destroy
 
   has_many   :pictures,
-             :foreign_key => "uploaded_by",
-             :dependent => :destroy
+             foreign_key: "uploaded_by",
+             dependent: :destroy
 
   # Indirect associations
 

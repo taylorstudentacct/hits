@@ -13,7 +13,7 @@ class Api::V1::RiversController < Api::V1::GraphitiController
     river = RiverResource.build(params)
 
     if river.save
-      render jsonapi: river, status: 201
+      render jsonapi: river, status: :created
     else
       render jsonapi_errors: river
     end
@@ -33,7 +33,7 @@ class Api::V1::RiversController < Api::V1::GraphitiController
     river = RiverResource.find(params)
 
     if river.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: river
     end

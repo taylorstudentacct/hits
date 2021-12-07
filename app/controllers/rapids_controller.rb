@@ -1,11 +1,12 @@
 class RapidsController < ApplicationController
-  before_action :set_rapid, only: [:show, :edit, :update, :destroy]
+  before_action :set_rapid, only: %i[show edit update destroy]
 
   # GET /rapids
   def index
     @q = Rapid.ransack(params[:q])
-    @rapids = @q.result(:distinct => true).includes(:river, :pictures).page(params[:page]).per(10)
-    @location_hash = Gmaps4rails.build_markers(@rapids.where.not(:location_latitude => nil)) do |rapid, marker|
+    @rapids = @q.result(distinct: true).includes(:river,
+                                                 :pictures).page(params[:page]).per(10)
+    @location_hash = Gmaps4rails.build_markers(@rapids.where.not(location_latitude: nil)) do |rapid, marker|
       marker.lat rapid.location_latitude
       marker.lng rapid.location_longitude
       marker.infowindow "<h5><a href='/rapids/#{rapid.id}'>#{rapid.name}</a></h5><small>#{rapid.location_formatted_address}</small>"
@@ -23,17 +24,16 @@ class RapidsController < ApplicationController
   end
 
   # GET /rapids/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /rapids
   def create
     @rapid = Rapid.new(rapid_params)
 
     if @rapid.save
-      message = 'Rapid was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Rapid was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @rapid, notice: message
       end
@@ -45,7 +45,7 @@ class RapidsController < ApplicationController
   # PATCH/PUT /rapids/1
   def update
     if @rapid.update(rapid_params)
-      redirect_to @rapid, notice: 'Rapid was successfully updated.'
+      redirect_to @rapid, notice: "Rapid was successfully updated."
     else
       render :edit
     end
@@ -55,22 +55,22 @@ class RapidsController < ApplicationController
   def destroy
     @rapid.destroy
     message = "Rapid was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to rapids_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_rapid
-      @rapid = Rapid.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def rapid_params
-      params.require(:rapid).permit(:name, :river_id, :location, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_rapid
+    @rapid = Rapid.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def rapid_params
+    params.require(:rapid).permit(:name, :river_id, :location, :description)
+  end
 end

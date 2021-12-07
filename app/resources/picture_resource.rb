@@ -24,7 +24,7 @@ class PictureResource < ApplicationResource
 
   filter :river_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:river).where(:rapids => {:river_id => value})
+      scope.eager_load(:river).where(rapids: { river_id: value })
     end
   end
 end

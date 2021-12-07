@@ -4,24 +4,24 @@ class Picture < ApplicationRecord
   # Direct associations
 
   has_many   :likes,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :rapid,
-             :counter_cache => true
+             counter_cache: true
 
   belongs_to :rafter,
-             :class_name => "User",
-             :foreign_key => "uploaded_by",
-             :counter_cache => true
+             class_name: "User",
+             foreign_key: "uploaded_by",
+             counter_cache: true
 
   # Indirect associations
 
   has_one    :river,
-             :through => :rapid,
-             :source => :river
+             through: :rapid,
+             source: :river
 
   # Validations
 
@@ -30,5 +30,4 @@ class Picture < ApplicationRecord
   def to_s
     rapid.to_s
   end
-
 end

@@ -13,7 +13,7 @@ class Api::V1::RapidsController < Api::V1::GraphitiController
     rapid = RapidResource.build(params)
 
     if rapid.save
-      render jsonapi: rapid, status: 201
+      render jsonapi: rapid, status: :created
     else
       render jsonapi_errors: rapid
     end
@@ -33,7 +33,7 @@ class Api::V1::RapidsController < Api::V1::GraphitiController
     rapid = RapidResource.find(params)
 
     if rapid.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: rapid
     end

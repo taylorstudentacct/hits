@@ -14,5 +14,4 @@ class RapidResource < ApplicationResource
   belongs_to :river
 
   # Indirect associations
-
 end

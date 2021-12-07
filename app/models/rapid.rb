@@ -1,10 +1,10 @@
-require 'open-uri'
+require "open-uri"
 class Rapid < ApplicationRecord
   before_validation :geocode_location
 
   def geocode_location
-    if self.location.present?
-      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(self.location)}"
+    if location.present?
+      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(location)}"
 
       raw_data = open(url).read
 
@@ -22,10 +22,10 @@ class Rapid < ApplicationRecord
   # Direct associations
 
   has_many   :pictures,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :river,
-             :counter_cache => true
+             counter_cache: true
 
   # Indirect associations
 
@@ -36,5 +36,4 @@ class Rapid < ApplicationRecord
   def to_s
     name
   end
-
 end

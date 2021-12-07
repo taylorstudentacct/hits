@@ -14,5 +14,4 @@ class LikeResource < ApplicationResource
              foreign_key: :liked_by
 
   # Indirect associations
-
 end

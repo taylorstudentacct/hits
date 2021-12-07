@@ -22,5 +22,4 @@ class UserResource < ApplicationResource
              foreign_key: :uploaded_by
 
   # Indirect associations
-
 end

@@ -8,6 +8,8 @@ class RiverResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :rapids
+
   # Indirect associations
 
 end

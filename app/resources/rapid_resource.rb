@@ -9,6 +9,8 @@ class RapidResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :river
+
   # Indirect associations
 
 end

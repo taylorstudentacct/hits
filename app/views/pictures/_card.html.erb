@@ -31,16 +31,20 @@
 
       <!-- Edit link picture start -->
       <div class="col">
-        <%= link_to edit_picture_url(picture), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @picture.rafter %>
+          <%= link_to edit_picture_url(picture), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link picture end -->
 
       <!-- Delete link picture start -->
       <div class="col">
-        <%= link_to picture, method: :delete, data: { confirm: "Do you really want to delete this picture?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @picture.rafter %>
+          <%= link_to picture, method: :delete, data: { confirm: "Do you really want to delete this picture?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link picture end -->

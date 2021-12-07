@@ -12,7 +12,11 @@
 
       <dt>Location</dt>
       <!-- Display location start -->
-      <dd><%= river.location %></dd>
+      <dd>
+        <div>
+          <%= render partial: "rivers/one_photo_map" %>
+        </div>
+      </dd>
       <!-- Display location end -->
 
       <dt>Description</dt>

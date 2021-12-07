@@ -4,6 +4,11 @@ class RiversController < ApplicationController
   # GET /rivers
   def index
     @rivers = River.all
+    @location_hash = Gmaps4rails.build_markers(@rivers.where.not(:location_latitude => nil)) do |river, marker|
+      marker.lat river.location_latitude
+      marker.lng river.location_longitude
+      marker.infowindow "<h5><a href='/rivers/#{river.id}'>#{river.name}</a></h5><small>#{river.location_formatted_address}</small>"
+    end
   end
 
   # GET /rivers/1

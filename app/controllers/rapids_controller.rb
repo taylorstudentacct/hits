@@ -4,6 +4,11 @@ class RapidsController < ApplicationController
   # GET /rapids
   def index
     @rapids = Rapid.all
+    @location_hash = Gmaps4rails.build_markers(@rapids.where.not(:location_latitude => nil)) do |rapid, marker|
+      marker.lat rapid.location_latitude
+      marker.lng rapid.location_longitude
+      marker.infowindow "<h5><a href='/rapids/#{rapid.id}'>#{rapid.name}</a></h5><small>#{rapid.location_formatted_address}</small>"
+    end
   end
 
   # GET /rapids/1

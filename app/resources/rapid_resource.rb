@@ -9,6 +9,8 @@ class RapidResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :pictures
+
   belongs_to :river
 
   # Indirect associations

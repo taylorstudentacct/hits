@@ -12,4 +12,12 @@ class RiverResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :pictures do
+    assign_each do |river, pictures|
+      pictures.select do |p|
+        p.id.in?(river.pictures.map(&:id))
+      end
+    end
+  end
+
 end

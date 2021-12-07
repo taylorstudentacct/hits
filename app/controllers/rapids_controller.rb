@@ -1,7 +1,6 @@
 class RapidsController < ApplicationController
   before_action :set_rapid, only: %i[show edit update destroy]
 
-  # GET /rapids
   def index
     @q = Rapid.ransack(params[:q])
     @rapids = @q.result(distinct: true).includes(:river,
@@ -9,24 +8,19 @@ class RapidsController < ApplicationController
     @location_hash = Gmaps4rails.build_markers(@rapids.where.not(location_latitude: nil)) do |rapid, marker|
       marker.lat rapid.location_latitude
       marker.lng rapid.location_longitude
-      marker.infowindow "<h5><a href='/rapids/#{rapid.id}'>#{rapid.name}</a></h5><small>#{rapid.location_formatted_address}</small>"
     end
   end
 
-  # GET /rapids/1
   def show
     @picture = Picture.new
   end
 
-  # GET /rapids/new
   def new
     @rapid = Rapid.new
   end
 
-  # GET /rapids/1/edit
   def edit; end
 
-  # POST /rapids
   def create
     @rapid = Rapid.new(rapid_params)
 
@@ -42,7 +36,6 @@ class RapidsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /rapids/1
   def update
     if @rapid.update(rapid_params)
       redirect_to @rapid, notice: "Rapid was successfully updated."
@@ -51,7 +44,6 @@ class RapidsController < ApplicationController
     end
   end
 
-  # DELETE /rapids/1
   def destroy
     @rapid.destroy
     message = "Rapid was successfully deleted."
@@ -64,12 +56,10 @@ class RapidsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_rapid
     @rapid = Rapid.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def rapid_params
     params.require(:rapid).permit(:name, :river_id, :location, :description)
   end

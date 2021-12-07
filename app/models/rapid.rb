@@ -1,6 +1,9 @@
 class Rapid < ApplicationRecord
   # Direct associations
 
+  belongs_to :river,
+             :counter_cache => true
+
   # Indirect associations
 
   # Validations

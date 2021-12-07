@@ -1,6 +1,9 @@
 class River < ApplicationRecord
   # Direct associations
 
+  has_many   :rapids,
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations

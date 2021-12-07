@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :pictures,
+             :foreign_key => "uploaded_by",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations

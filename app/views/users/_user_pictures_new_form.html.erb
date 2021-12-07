@@ -7,7 +7,7 @@
     <%= f.label :rapid_id %>
 
     <!-- Input for rapid_id start -->
-    <%= f.text_field :rapid_id, class: "form-control" %>
+    <%= f.collection_select :rapid_id, Rapid.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for rapid_id end -->
   </div>
   <!-- Label and input for rapid_id end -->

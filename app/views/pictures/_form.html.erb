@@ -16,7 +16,7 @@
 
     <%= f.label :rapid_id %>
     <!-- Input for rapid_id start -->
-    <%= f.number_field :rapid_id, class: rapid_class, placeholder: "Enter rapid" %>
+    <%= f.collection_select :rapid_id, Rapid.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for rapid_id end -->
     <% if rapid_was_invalid %>
       <% picture.errors.full_messages_for(:rapid).each do |message| %>

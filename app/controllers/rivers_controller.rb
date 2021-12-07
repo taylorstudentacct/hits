@@ -3,7 +3,8 @@ class RiversController < ApplicationController
 
   # GET /rivers
   def index
-    @rivers = River.page(params[:page]).per(10)
+    @q = River.ransack(params[:q])
+    @rivers = @q.result(:distinct => true).includes(:rapids, :pictures).page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@rivers.where.not(:location_latitude => nil)) do |river, marker|
       marker.lat river.location_latitude
       marker.lng river.location_longitude

@@ -3,7 +3,8 @@ class RapidsController < ApplicationController
 
   # GET /rapids
   def index
-    @rapids = Rapid.page(params[:page]).per(10)
+    @q = Rapid.ransack(params[:q])
+    @rapids = @q.result(:distinct => true).includes(:river, :pictures).page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@rapids.where.not(:location_latitude => nil)) do |rapid, marker|
       marker.lat rapid.location_latitude
       marker.lng rapid.location_longitude

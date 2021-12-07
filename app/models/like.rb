@@ -1,6 +1,9 @@
 class Like < ApplicationRecord
   # Direct associations
 
+  belongs_to :picture,
+             :counter_cache => true
+
   belongs_to :liker,
              :class_name => "User",
              :foreign_key => "liked_by",

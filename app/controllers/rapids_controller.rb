@@ -42,8 +42,14 @@ class RapidsController < ApplicationController
   # DELETE /rapids/1
   def destroy
     @rapid.destroy
-    redirect_to rapids_url, notice: 'Rapid was successfully destroyed.'
+    message = "Rapid was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to rapids_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

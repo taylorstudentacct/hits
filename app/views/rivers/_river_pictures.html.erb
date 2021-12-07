@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Pictures
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @river.pictures.each do |picture| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <a href="/pictures/<%= picture.id %>">
+          <%= picture %>
+        </a>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>

@@ -13,7 +13,7 @@
     <%= f.label :uploaded_by %>
 
     <!-- Input for uploaded_by start -->
-    <%= f.text_field :uploaded_by, class: "form-control" %>
+    <%= f.collection_select :uploaded_by, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for uploaded_by end -->
   </div>
   <!-- Label and input for uploaded_by end -->

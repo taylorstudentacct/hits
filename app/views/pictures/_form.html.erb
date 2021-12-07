@@ -42,7 +42,7 @@
 
     <%= f.label :uploaded_by %>
     <!-- Input for uploaded_by start -->
-    <%= f.number_field :uploaded_by, class: uploaded_by_class, placeholder: "Enter uploaded by" %>
+    <%= f.collection_select :uploaded_by, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for uploaded_by end -->
     <% if uploaded_by_was_invalid %>
       <% picture.errors.full_messages_for(:uploaded_by).each do |message| %>

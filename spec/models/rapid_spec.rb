@@ -4,6 +4,8 @@ RSpec.describe Rapid, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:pictures) }
+
     it { should belong_to(:river) }
 
     end

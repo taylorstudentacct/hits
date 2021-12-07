@@ -1,6 +1,9 @@
 class Rapid < ApplicationRecord
   # Direct associations
 
+  has_many   :pictures,
+             :dependent => :destroy
+
   belongs_to :river,
              :counter_cache => true
 

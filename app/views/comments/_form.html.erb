@@ -16,7 +16,7 @@
 
     <%= f.label :picture_id %>
     <!-- Input for picture_id start -->
-    <%= f.number_field :picture_id, class: picture_class, placeholder: "Enter picture" %>
+    <%= f.collection_select :picture_id, Picture.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for picture_id end -->
     <% if picture_was_invalid %>
       <% comment.errors.full_messages_for(:picture).each do |message| %>

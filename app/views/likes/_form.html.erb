@@ -1,0 +1,57 @@
+<% was_validated = like.errors.any? %>
+
+<%= form_with(model: like, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for picture_id start -->
+  <div class="form-group">
+    <% picture_class = "form-control" %>
+    <% picture_was_invalid = like.errors.include?(:picture) %>
+
+    <% if was_validated %>
+      <% if picture_was_invalid %>
+        <% picture_class << " is-invalid" %>
+      <% else %>
+        <% picture_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :picture_id %>
+    <!-- Input for picture_id start -->
+    <%= f.number_field :picture_id, class: picture_class, placeholder: "Enter picture" %>
+    <!-- Input for picture_id end -->
+    <% if picture_was_invalid %>
+      <% like.errors.full_messages_for(:picture).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for picture_id end -->
+  <!-- Label and input for liked_by start -->
+  <div class="form-group">
+    <% liked_by_class = "form-control" %>
+    <% liked_by_was_invalid = like.errors.include?(:liked_by) %>
+
+    <% if was_validated %>
+      <% if liked_by_was_invalid %>
+        <% liked_by_class << " is-invalid" %>
+      <% else %>
+        <% liked_by_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :liked_by %>
+    <!-- Input for liked_by start -->
+    <%= f.number_field :liked_by, class: liked_by_class, placeholder: "Enter liked by" %>
+    <!-- Input for liked_by end -->
+    <% if liked_by_was_invalid %>
+      <% like.errors.full_messages_for(:liked_by).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for liked_by end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

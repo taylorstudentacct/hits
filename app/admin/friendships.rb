@@ -1,5 +1,5 @@
-ActiveAdmin.register Rapid do
-  permit_params :name, :river_id, :location, :description, :difficulty
+ActiveAdmin.register Friendship do
+  permit_params :friend1_id, :friend2_id
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

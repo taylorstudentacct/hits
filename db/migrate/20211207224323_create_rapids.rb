@@ -5,6 +5,7 @@ class CreateRapids < ActiveRecord::Migration[6.0]
       t.integer :river_id
       t.string :location
       t.string :description
+      t.integer :difficulty
 
       t.timestamps
     end

@@ -51,6 +51,6 @@ class RiversController < ApplicationController
   end
 
   def river_params
-    params.require(:river).permit(:name, :location, :description)
+    params.require(:river).permit(:name, :location, :description, :classrange)
   end
 end

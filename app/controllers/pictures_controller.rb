@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
   def index
     @q = Picture.ransack(params[:q])
     @pictures = @q.result(distinct: true).includes(:rafter, :rapid,
-                                                   :comments, :likes, :river).page(params[:page]).per(10)
+                                                   :comments, :likes, :river, :friendship).page(params[:page]).per(10)
   end
 
   def show

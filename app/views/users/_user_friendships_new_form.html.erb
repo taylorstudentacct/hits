@@ -1,0 +1,12 @@
+<%= form_with(model: @friendship, local: true) do |f| %>
+
+  <%= f.hidden_field :friend1_id, value: @user.id %>
+
+  <div class="form-group">
+    <%= f.label :friend2_id %>
+
+    <%= f.text_field :friend2_id, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Create friendship", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

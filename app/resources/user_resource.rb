@@ -12,6 +12,13 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :friends,
+             resource: FriendshipResource,
+             foreign_key: :friend2_id
+
+  has_many   :friendships,
+             foreign_key: :friend1_id
+
   has_many   :likes,
              foreign_key: :liked_by
 

@@ -6,6 +6,7 @@ class RapidResource < ApplicationResource
   attribute :river_id, :integer
   attribute :location, :string
   attribute :description, :string
+  attribute :difficulty, :integer
 
   # Direct associations
 

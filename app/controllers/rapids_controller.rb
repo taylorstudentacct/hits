@@ -61,6 +61,7 @@ class RapidsController < ApplicationController
   end
 
   def rapid_params
-    params.require(:rapid).permit(:name, :river_id, :location, :description)
+    params.require(:rapid).permit(:name, :river_id, :location, :description,
+                                  :difficulty)
   end
 end

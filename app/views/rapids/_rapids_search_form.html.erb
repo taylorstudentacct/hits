@@ -7,6 +7,18 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :difficulty, "Difficulty" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <%= f.text_field :difficulty_gteq, :class => "form-control", :placeholder => "Difficulty greater than or equal to" %>
+      </div>
+      <div class='col-md-6'>
+        <%= f.text_field :difficulty_lteq, :class => "form-control", :placeholder => "Difficulty less than or equal to" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :description_cont, "Description contains" %>
     <%= f.text_field :description_cont, :class => "form-control", :placeholder => "Description contains" %>
   </div>

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @friendship = Friendship.new
     @like = Like.new
     @comment = Comment.new
     @picture = Picture.new

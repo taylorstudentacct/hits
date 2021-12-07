@@ -8,6 +8,7 @@ class RapidsController < ApplicationController
 
   # GET /rapids/1
   def show
+    @picture = Picture.new
   end
 
   # GET /rapids/new
@@ -24,7 +25,12 @@ class RapidsController < ApplicationController
     @rapid = Rapid.new(rapid_params)
 
     if @rapid.save
-      redirect_to @rapid, notice: 'Rapid was successfully created.'
+      message = 'Rapid was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @rapid, notice: message
+      end
     else
       render :new
     end

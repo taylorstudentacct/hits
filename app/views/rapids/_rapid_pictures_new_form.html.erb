@@ -1,0 +1,32 @@
+<!-- Form picture start -->
+<%= form_with(model: @picture, local: true) do |f| %>
+<!-- Form picture end -->
+
+  <!-- Label and input for rapid_id start -->
+  <!-- Input for rapid_id start -->
+  <%= f.hidden_field :rapid_id, value: @rapid.id %>
+  <!-- Input for rapid_id end -->
+  <!-- Label and input for rapid_id end -->
+
+  <!-- Label and input for uploaded_by start -->
+  <div class="form-group">
+    <%= f.label :uploaded_by %>
+
+    <!-- Input for uploaded_by start -->
+    <%= f.text_field :uploaded_by, class: "form-control" %>
+    <!-- Input for uploaded_by end -->
+  </div>
+  <!-- Label and input for uploaded_by end -->
+
+  <!-- Label and input for picture start -->
+  <div class="form-group">
+    <%= f.label :picture %>
+
+    <!-- Input for picture start -->
+    <%= f.text_field :picture, class: "form-control" %>
+    <!-- Input for picture end -->
+  </div>
+  <!-- Label and input for picture end -->
+
+  <%= f.submit "Create picture", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

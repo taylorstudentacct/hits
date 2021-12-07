@@ -8,6 +8,7 @@ class RiversController < ApplicationController
 
   # GET /rivers/1
   def show
+    @rapid = Rapid.new
   end
 
   # GET /rivers/new

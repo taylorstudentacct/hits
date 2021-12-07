@@ -17,6 +17,10 @@ class Picture < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :river,
+             :through => :rapid,
+             :source => :river
+
   # Validations
 
   # Scopes

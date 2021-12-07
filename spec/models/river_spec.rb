@@ -10,6 +10,8 @@ RSpec.describe River, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:pictures) }
+
     end
 
     describe "Validations" do

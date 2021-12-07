@@ -6,6 +6,10 @@ class River < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :pictures,
+             :through => :rapids,
+             :source => :pictures
+
   # Validations
 
   # Scopes

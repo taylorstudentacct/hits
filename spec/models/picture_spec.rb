@@ -16,6 +16,8 @@ RSpec.describe Picture, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_one(:river) }
+
     end
 
     describe "Validations" do

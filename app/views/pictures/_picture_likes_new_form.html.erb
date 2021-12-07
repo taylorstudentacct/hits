@@ -13,7 +13,7 @@
     <%= f.label :liked_by %>
 
     <!-- Input for liked_by start -->
-    <%= f.text_field :liked_by, class: "form-control" %>
+    <%= f.collection_select :liked_by, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for liked_by end -->
   </div>
   <!-- Label and input for liked_by end -->

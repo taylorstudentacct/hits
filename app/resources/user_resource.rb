@@ -12,6 +12,9 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :pictures,
+             foreign_key: :uploaded_by
+
   # Indirect associations
 
 end

@@ -8,6 +8,10 @@ class PictureResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :rafter,
+             resource: UserResource,
+             foreign_key: :uploaded_by
+
   # Indirect associations
 
 end

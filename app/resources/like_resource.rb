@@ -7,6 +7,8 @@ class LikeResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :picture
+
   belongs_to :liker,
              resource: UserResource,
              foreign_key: :liked_by

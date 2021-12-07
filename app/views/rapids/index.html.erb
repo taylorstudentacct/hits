@@ -38,6 +38,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @rapids, partial: "list_item", as: :rapid %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @rapids, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>

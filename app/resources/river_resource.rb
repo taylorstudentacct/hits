@@ -5,6 +5,7 @@ class RiverResource < ApplicationResource
   attribute :name, :string
   attribute :location, :string
   attribute :description, :string
+  attribute :classrange, :integer
 
   # Direct associations
 

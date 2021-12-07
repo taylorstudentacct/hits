@@ -4,6 +4,7 @@ class CreateRivers < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :location
       t.string :description
+      t.integer :classrange
 
       t.timestamps
     end

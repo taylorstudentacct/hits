@@ -12,6 +12,8 @@ RSpec.describe Picture, type: :model do
   end
 
   describe "InDirect Associations" do
+    it { should have_one(:friendship) }
+
     it { should have_one(:river) }
   end
 

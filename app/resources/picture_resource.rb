@@ -20,6 +20,7 @@ class PictureResource < ApplicationResource
 
   # Indirect associations
 
+  has_one    :friendship
   has_one    :river
 
   filter :river_id, :integer do

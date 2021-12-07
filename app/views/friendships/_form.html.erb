@@ -1,0 +1,49 @@
+<% was_validated = friendship.errors.any? %>
+
+<%= form_with(model: friendship, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <div class="form-group">
+    <% friend1_class = "form-control" %>
+    <% friend1_was_invalid = friendship.errors.include?(:friend1) %>
+
+    <% if was_validated %>
+      <% if friend1_was_invalid %>
+        <% friend1_class << " is-invalid" %>
+      <% else %>
+        <% friend1_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :friend1_id %>
+    <%= f.collection_select :friend1_id, User.all, :id, :to_s, {}, class: "form-control" %>
+    <% if friend1_was_invalid %>
+      <% friendship.errors.full_messages_for(:friend1).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% friend2_class = "form-control" %>
+    <% friend2_was_invalid = friendship.errors.include?(:friend2) %>
+
+    <% if was_validated %>
+      <% if friend2_was_invalid %>
+        <% friend2_class << " is-invalid" %>
+      <% else %>
+        <% friend2_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :friend2_id %>
+    <%= f.collection_select :friend2_id, User.all, :id, :to_s, {}, class: "form-control" %>
+    <% if friend2_was_invalid %>
+      <% friendship.errors.full_messages_for(:friend2).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

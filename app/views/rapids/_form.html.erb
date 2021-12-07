@@ -89,5 +89,27 @@
       <% end %>
     <% end %>
   </div>
+  <div class="form-group">
+    <% difficulty_class = "form-control" %>
+    <% difficulty_was_invalid = rapid.errors.include?(:difficulty) %>
+
+    <% if was_validated %>
+      <% if difficulty_was_invalid %>
+        <% difficulty_class << " is-invalid" %>
+      <% else %>
+        <% difficulty_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :difficulty %>
+    <%= f.number_field :difficulty, class: difficulty_class, placeholder: "Enter difficulty" %>
+    <% if difficulty_was_invalid %>
+      <% rapid.errors.full_messages_for(:difficulty).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

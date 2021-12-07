@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Friendship #<%= friendship.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Friend1</dt>
+      <dd>
+        <% if @friendship.friend1.present? %>
+          <%= link_to friendship.friend1, friendship.friend1 %>
+        <% end %>
+      </dd>
+
+      <dt>Friend2</dt>
+      <dd>
+        <% if @friendship.friend2.present? %>
+          <%= link_to friendship.friend2, friendship.friend2 %>
+        <% end %>
+      </dd>
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back friendship, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <div class="col">
+        <%= link_to edit_friendship_url(friendship), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <%= link_to friendship, method: :delete, data: { confirm: "Do you really want to delete this friendship?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(friendship.updated_at) %> ago
+  </div>
+</div>

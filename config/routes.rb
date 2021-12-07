@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   scope path: ApplicationResource.endpoint_namespace,
         defaults: { format: :jsonapi } do
     scope module: "api/v1", as: "api" do
+      resources :friendships
+
       resources :likes
 
       resources :comments
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: "rivers#index"
+  resources :friendships
   resources :likes
   resources :comments
   resources :pictures

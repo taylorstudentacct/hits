@@ -19,6 +19,10 @@ class Picture < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :friendship,
+             through: :rafter,
+             source: :friendships
+
   has_one    :river,
              through: :rapid,
              source: :river
